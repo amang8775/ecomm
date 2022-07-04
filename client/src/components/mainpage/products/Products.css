@@ -1,0 +1,38 @@
+.delete-all{
+  text-align: right;
+  margin: 20px;
+}
+.delete-all input{
+  height: 25px;
+  width: 25px;
+  transform: translateY(5px);
+  margin: 0 15px;
+}
+.delete-all span{
+  text-transform: uppercase;
+  color: rgb(3, 165, 206);
+  letter-spacing: 1.3px;
+}
+.delete-all button{
+  border: 1px solid crimson;
+  padding: 10px 25px;
+  color: crimson;
+  text-transform: uppercase;
+  background-color: white;
+}
+.product-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.load{
+  display: block;
+  border: 1px solid #555;
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  margin: 20px auto;
+  background-color: white;
+}
