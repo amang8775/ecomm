@@ -4,6 +4,8 @@ const UserApi = (token) => {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [cart, setCart] = useState([]);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const getUser = async () => {
@@ -12,6 +14,8 @@ const UserApi = (token) => {
           const res = await axios.get("/user/info", {
             headers: { Authorization: token },
           });
+          setEmail(res.data.email);
+          setName(res.data.name);
           setIsLogged(true);
           res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
 
@@ -36,7 +40,7 @@ const UserApi = (token) => {
 
       await axios.patch(
         "/user/addcart",
-         {cart: [...cart, {...product, quantity: 1}]}  ,
+        { cart: [...cart, { ...product, quantity: 1 }] },
         {
           headers: { Authorization: token },
         }
@@ -46,11 +50,12 @@ const UserApi = (token) => {
     }
   };
   return {
-
     isLogged: [isLogged, setIsLogged],
     isAdmin: [isAdmin, setIsAdmin],
-    cart : [cart,setCart],
-    addCart:addCart
+    cart: [cart, setCart],
+    email: [email],
+    name: [name],
+    addCart: addCart,
   };
 };
 

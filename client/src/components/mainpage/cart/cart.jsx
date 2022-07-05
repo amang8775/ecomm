@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -11,7 +12,9 @@ export default function Cart() {
   
   const[total,setTotal] = useState(0);
   const state = useContext(AuthContext)
-  const [cart,setCart] = state.userApi.cart
+  const [cart] = state.userApi.cart
+  const [email] = state.userApi.email
+  const [name] = state.userApi.name
   
   useEffect(()=>{
     let sum = 0 ; 
@@ -22,6 +25,21 @@ export default function Cart() {
     setTotal(sum);
   },[cart])
   
+  const handlePayment = async(total)=>{
+    try {
+    const res =   await axios.post("/api/payment/paynow",{ 
+        amount:total.toString(),
+        name,
+        email,
+        "phone": "9821055090"
+  })
+
+  console.log(res);
+      
+    } catch (error) {
+      alert(error.response.data)
+    }
+  }
   return (
       <div className="cart-container">
         {cart.map(c=>{
@@ -31,7 +49,7 @@ export default function Cart() {
         })}
       <div className="totalPrice">Total Price {total}</div>
      
-     
+       <button onClick={()=>{handlePayment(total)}}></button>
       
       </div>
   )
