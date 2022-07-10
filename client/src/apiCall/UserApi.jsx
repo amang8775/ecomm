@@ -15,7 +15,7 @@ const UserApi = (token) => {
             headers: { Authorization: token },
           });
           setEmail(res.data.email);
-          setName(res.data.name);
+          setName(res.data.username);
           setIsLogged(true);
           res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
 

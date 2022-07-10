@@ -89,7 +89,7 @@ export default function Products() {
       </div>
       
       <button className="load"> Load More</button>
-      {products.length === 0 && <Loading />}
+      
       
     </div>
   );
