@@ -1,0 +1,15 @@
+.totalPrice{
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: bolder;
+  color: red;
+  margin-left: 10px;
+}
+.payment-button{
+  background-color: white;
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin: 10px 10px;
+}

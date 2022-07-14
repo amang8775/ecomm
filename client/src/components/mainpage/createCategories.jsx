@@ -10,19 +10,27 @@ const CreateCategory = () => {
   const [token] = state.token;
   const [categories] = state.categoryApi.categories;
   const [callback, setCallback] = state.categoryApi.callback;
-  const cate = useRef();
+  const cate = useRef('');
 
-  const handleDeleteCategory = async(id,name)=>{
+  const handleDeleteCategory = async(id)=>{
       try {
-        const body = {
-          id , name 
-        }
-        const res = await axios.delete("/api/category/",{body},{ headers: { Authorization: token } });
+       
+        const res = await axios.delete(`/api/category/${id}`,{ headers: { Authorization: token } });
         alert(res.data.msg)
         setCallback(!callback)
       } catch (error) {
         alert(error.response.data)
       }
+  }
+  const handleUpdateCategory = async(id)=>{
+    try {
+       
+      const res = await axios.put(`/api/category/${id}`,{name:cate.current.value},{ headers: { Authorization: token } });
+      alert(res.data.msg)
+      setCallback(!callback)
+    } catch (error) {
+      alert(error.response.data)
+    }
   }
   const handleCategoryUpload = async () => {
     const val = cate.current.value;
@@ -60,8 +68,8 @@ const CreateCategory = () => {
             <li className="category-item" key = {c._id}>
             {c.name}
             <span>
-              <button className="categoryBtn">edit</button>
-              <button className="categoryBtn" onClick={()=>{handleDeleteCategory(c._id,c.name)}}>delete</button>
+              <button className="categoryBtn" onClick={()=>{handleUpdateCategory(c._id)}}>edit</button>
+              <button className="categoryBtn" onClick={()=>{handleDeleteCategory(c._id)}}>delete</button>
             </span>
           </li>
            )

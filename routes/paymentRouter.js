@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
+const paymentCtrl = require("../controller/paymentController");
+const auth = require('../middlewares/auth');
 
 router.post("/orders", async (req, res) => {
 	try {
@@ -48,5 +50,7 @@ router.post("/verify", async (req, res) => {
 		console.log(error);
 	}
 });
+router.post('/createPayment',auth,paymentCtrl.createPayment)
+router.get('/getPayment',auth,paymentCtrl.getPayment)
 
 module.exports = router;

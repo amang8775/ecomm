@@ -7,6 +7,9 @@ const UserApi = (token) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
+  
+  const [history,setHistory] = useState([]);
+
   useEffect(() => {
     const getUser = async () => {
       if (token) {
@@ -14,6 +17,7 @@ const UserApi = (token) => {
           const res = await axios.get("/user/info", {
             headers: { Authorization: token },
           });
+       
           setEmail(res.data.email);
           setName(res.data.username);
           setIsLogged(true);
@@ -53,8 +57,10 @@ const UserApi = (token) => {
     isLogged: [isLogged, setIsLogged],
     isAdmin: [isAdmin, setIsAdmin],
     cart: [cart, setCart],
-    email: [email],
-    name: [name],
+    history : [history,setHistory],
+    name : [name,setName],
+    email : [email,setEmail],
+ 
     addCart: addCart,
   };
 };

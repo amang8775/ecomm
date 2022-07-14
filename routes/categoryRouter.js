@@ -6,6 +6,7 @@ const auth = require('../middlewares/auth');
 
 router.get('/',categoryController.getCategory)
 router.post('/',auth,authAdmin,categoryController.createCategory)
-router.delete('/',auth,authAdmin,categoryController.deleteCategory)
+router.delete('/:id',auth,authAdmin,categoryController.deleteCategory)
+router.put('/:id',auth,authAdmin,categoryController.updateCategory)
 
 module.exports = router;

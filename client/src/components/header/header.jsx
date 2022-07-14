@@ -70,6 +70,7 @@ export default function Header() {
           >
             {isLogged ? "Logout" : "Login"}{" "}
           </Link>
+          {isLogged ? <Link to = "/history" className="mobile-list-target">History</Link> : ""}
         </li>
       </ul>
       <div className="cart-icon">
