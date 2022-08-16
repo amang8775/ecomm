@@ -11,9 +11,10 @@
   margin: 0px 15px;
 }
 .item-image {
-  height: 80%;
+  height: 70%;
   width: 80%;
   object-fit: cover;
+  object-position: center;
   
 }
 .cart-desc {

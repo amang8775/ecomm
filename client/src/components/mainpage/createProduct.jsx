@@ -166,6 +166,7 @@ const CreateProduct = () => {
             value={product.category}
             onChange={handleInputChange}
           >
+            <option value = {''}>Select Category</option>
             {categories.map((category) => (
               <option value={category.name} key={category._id}>
                 {category.name}

@@ -16,10 +16,10 @@ const paymentCtrl = {
         try {
             const user = await Users.findById(req.user.id).select('name email')
             if(!user) return res.status(400).json({msg: "User does not exist."})
-            
+            console.log("reqcreatePayment",req);
             const {cart, paymentID} = req.body;
 
-            const {_id, name, email,address} = user;
+            const {_id, username, email,address} = user;
 
             const newPayment = new Payments({
                 user_id: _id, username, email, cart, paymentID, address
